@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+>
+	<TextView
+		android:id="@+id/songInfoTextView"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content" 
+	    android:text="play"
+    />
+	<!-- Toolbar -->
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/songPlayToolbar"
+    	android:orientation="horizontal"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+   	>
+    	<ImageButton android:id="@+id/songPlayPreviousButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_media_previous"
+		android:visibility="gone"
+		/>
+    	<ImageButton android:id="@+id/songPauseButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_media_pause"
+		android:visibility="gone"
+		/>
+    	<ImageButton android:id="@+id/songPlayButton"
+    		android:visibility="gone"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@@android:drawable/ic_media_play"
+		/>
+    	<ImageButton android:id="@+id/songPlayNextButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_media_next"
+		android:visibility="gone"
+		/>
+    	<ImageButton android:id="@+id/songEditLyricsButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_menu_edit"
+		/>
+    	<ImageButton android:id="@+id/songSaveLyricsButton"
+    		android:visibility="gone"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_menu_save"
+		/>
+    	<ImageButton android:id="@+id/songSearchLyricsButton"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@android:drawable/ic_menu_search"
+		/>
+	</LinearLayout>
+	<TextView
+		android:id="@+id/songLyricsTextView"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="view lyrics"
+	    android:layout_below="@id/songInfoTextView"
+	    android:layout_above="@id/songPlayToolbar"
+    />
+	<EditText
+		android:id="@+id/songLyricsEditText"
+		android:visibility="gone"
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="edit lyrics"
+	    android:layout_below="@id/songInfoTextView"
+	    android:layout_above="@id/songPlayToolbar"
+	/>
+</RelativeLayout>
