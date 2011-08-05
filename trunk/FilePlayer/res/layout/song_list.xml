@@ -9,6 +9,9 @@
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
 	    android:text="/sdcard"
+	    android:textStyle="bold"
+	    android:textColor="@android:color/white"
+	    android:background="@android:color/darker_gray"
 	/>
 	<ListView android:id="@android:id/list"
     	android:layout_width="fill_parent"
