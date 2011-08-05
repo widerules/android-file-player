@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_application">Giới thiệu</string>
+    <string name="app_name">File Player</string>
+    <string name="format_directory_not_exist">Thư mục %s không tồn tại.</string>
+    <string name="email">Email: contact@chauhai.com</string>
+    <string name="no_music_file">Không có file nhạc nào.</string>
+    <string name="web_site">Web site: http://www.chauhai.com</string>
+    <string name="search_lyrics">lyrics, lời</string>
+</resources>

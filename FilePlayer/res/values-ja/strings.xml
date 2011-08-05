@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_application">アプリについて</string>
+    <string name="app_name">ファイルプレーヤー</string>
+    <string name="format_directory_not_exist">ディレクトリー %s は存在しません.</string>
+    <string name="email">Eメール: contact@chauhai.com</string>
+    <string name="no_music_file">音楽ファイルはありません.</string>
+    <string name="web_site">ウェブサイト: http://www.chauhai.com</string>
+    <string name="search_lyrics">歌詞</string>
+</resources>

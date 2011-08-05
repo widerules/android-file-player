@@ -1,28 +1,30 @@
 package com.chauhai.android.fileplayer;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
 
 import com.chauhai.android.fileplayer.util.DirectoryFilter;
 import com.chauhai.android.fileplayer.util.FileNameComparator;
 import com.chauhai.android.fileplayer.util.FileUtils;
 import com.chauhai.android.fileplayer.util.MusicFileFilter;
 
-public class SongListActivity extends Activity implements OnItemClickListener {
+public class SongListActivity extends ListActivity {
+	
+	private static final String DIR_PATH = "DIR_PATH";
+	
+	private static final String TAG = "SongListActivity";
 	/**
 	 * The root directory that the application can access.
 	 */
@@ -34,21 +36,23 @@ public class SongListActivity extends Activity implements OnItemClickListener {
 	private TextView currentDirectoryTextView;
 
 	/**
-	 * The view that display the song list.
-	 */
-	private ListView songListView;
-	
-	/**
 	 * Current directory path.
 	 */
 	private String currentDirectoryPath = rootPath;
 	
-	/**
-	 * Item list.
-	 */
-	private ArrayList<String> itemFileName;
-
 	private ArrayList<MusicFile> musicFiles;
+	
+    /**
+     * Call PalySongActivity to play a music file.
+     * @param context
+     * @param filePath Absolute path.
+     */
+    public static void listSongs(Context context, String dirPath) {
+    	Log.d(TAG, "listSongs " + dirPath);
+		Intent intent = new Intent(context, SongListActivity.class);
+		intent.putExtra(SongListActivity.DIR_PATH, dirPath);
+		context.startActivity(intent);
+    }
 	
     /** Called when the activity is first created. */
     @Override
@@ -58,18 +62,12 @@ public class SongListActivity extends Activity implements OnItemClickListener {
 
         // Get view objects.
         currentDirectoryTextView = (TextView) findViewById(R.id.currentDirectoryTextView);
-        songListView = (ListView) findViewById(R.id.songListView);
         
         // Display the song list.
+        Bundle extras = getIntent().getExtras();
+        currentDirectoryPath = extras != null ? extras.get(DIR_PATH).toString() : rootPath;
         displaySongList(currentDirectoryPath);
-        songListView.setOnItemClickListener(this);
     }
-    
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//      super.onConfigurationChanged(newConfig);
-//      setContentView(R.layout.song_list);
-//    }
 
     /**
      * Get all the music file in the specified directory, and display it into the list. 
@@ -81,40 +79,27 @@ public class SongListActivity extends Activity implements OnItemClickListener {
     	currentDirectoryTextView.setText(dir);
     	
     	// Get the file list.
-    	getItemList(dir);
+    	getMusciFiles(dir);
     	
-    	// Display into the songListView
-//    	for (MusicFile musicFile : musicFiles) {
-//    		TableRow tableRow = new TableRow(this);
-//    		ImageView imageView = new ImageView(this);
-//    		int imageResource;
-//    		if (musicFile.isDirectory()) {
-//    			imageResource = R.drawable.ic_folder;
-//    		} else if (musicFile.lyricsFileExist()) {
-//    			imageResource = R.drawable.ic_lyrics;
-//    		} else {
-//    			imageResource = R.drawable.ic_music;
-//    		}
-//    		imageView.setImageResource(imageResource);
-//    		tableRow.addView(imageView);
-//    		TextView textView = new TextView(this);
-//    		textView.setText(musicFile.getMusicFileName());
-//    		tableRow.addView(textView);
-//    		tableRow.setOnClickListener(this);
-//    		songListView.addView(tableRow);
-//    	}
-    	ArrayAdapter<String> itemList = new ArrayAdapter<String>(this,
-    			    android.R.layout.simple_list_item_1,
-    			    itemFileName);
-    	songListView.setAdapter(itemList);
+    	SongListAdapter adapter = new SongListAdapter(this, musicFiles);
+    	setListAdapter(adapter);
     }
 
     /**
-     * Get the list of items (files) in specified directory.
+     * Get the current directory path.
+     * @return
+     */
+    public String getCurrentDirectoryPath() {
+    	return currentDirectoryPath;
+    }
+    
+    /**
+     * Get the list of items (files) in specified directory,
+     * set them to musicFiles.
+     * 
      * @param dirPath
      */
-    private void getItemList(String dirPath) {
-    	itemFileName = new ArrayList<String>();
+    private void getMusciFiles(String dirPath) {
     	musicFiles = new ArrayList<MusicFile>();
     	
     	// Get file list.
@@ -122,71 +107,67 @@ public class SongListActivity extends Activity implements OnItemClickListener {
     	FileNameComparator fileNameComparator = new FileNameComparator();
     	ArrayList<File> files;
     	files = FileUtils.listFiles(dirPath, new DirectoryFilter(), fileNameComparator);
+    	if (files == null) { // Music directory does not exist.
+    		// Change empty message to "Directory does not exist"
+    		((TextView) findViewById(android.R.id.empty)).setText(
+    				String.format(getString(R.string.format_directory_not_exist), dirPath));
+    		return;
+    	}
     	files.addAll(FileUtils.listFiles(dirPath, new MusicFileFilter(musicFileExt), fileNameComparator));
 
     	// Add file to list view.
     	Iterator<File> it = files.iterator();
     	while (it.hasNext()) {
     		File file = it.next();
-    		addItemIntoList(file);
+    		addMusicFileToList(file);
     	}
 
     	// Add parent directory.
-    	if (!dirPath.equals(rootPath)) {
-    		addItemIntoList(0, new File(new File(dirPath).getParent()));
-    	}
+//    	if (!dirPath.equals(rootPath)) {
+//    		Log.d(TAG, "Add parent directory");
+//    		addMusicFileToList(0, new File(new File(dirPath).getParent()));
+//    	}
     }
 
-    private void addItemIntoList(File file) {
-    	addItemIntoList(-1, file);
+    /**
+     * Append music file to the end of musicFiles.
+     * @param file
+     */
+    private void addMusicFileToList(File file) {
+    	addMusicFileToList(-1, file);
     }
     
     /**
-     * Add a file into listview data.
+     * Add a file into musicFiles.
      * @param index Ignore if -1.
      * @param file
      */
-    private void addItemIntoList(int index, File file) {
+    private void addMusicFileToList(int index, File file) {
     	MusicFile musicFile = new MusicFile(file);
-    	String itemName;
-    	if (musicFile.isDirectory()) {
-    		itemName = "D";
-    	} else if (musicFile.lyricsFileExist()) {
-    		itemName = "L";
-    	} else {
-    		itemName = "M";
-    	}
-    	itemName = itemName + " " + musicFile.getMusicFileName();
     	if (index == -1) {
-    		itemFileName.add(itemName);
     		musicFiles.add(musicFile);
     	} else {
-    		itemFileName.add(index, itemName);
     		musicFiles.add(index, musicFile);
     	}
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.song_list, menu);
+        return true;
+    }
     
-    /**
-     * Process when a file or directory is clicked.
-     */
-	@Override
-	public void onItemClick(AdapterView<?> adapter, View v, int position, long id) {
-		// Get path of the music file.
-		String filePath = musicFiles.get(position).getMusicFilePath();
-		File file = new File(filePath);
-		
-		if (file.isDirectory()) {
-			// Open directory.
-			if (file.canRead()) {
-				displaySongList(filePath);
-			}
-		} else {
-			// Play music file.
-			if (file.canRead()) {
-				Intent intent = new Intent(this, PlaySongActivity.class);
-				intent.putExtra(PlaySongActivity.FILE_PATH, file.getPath());
-				startActivity(intent);
-			}
-		}
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+        case R.id.about:
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
+    }
 }
