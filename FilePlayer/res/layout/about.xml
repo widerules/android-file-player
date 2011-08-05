@@ -58,4 +58,14 @@
 	    android:text="@string/email"
 	    android:autoLink="email"
 	/>
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="\n"
+	/>
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+		android:text="@string/about_application_content"
+	/>
 </LinearLayout>
