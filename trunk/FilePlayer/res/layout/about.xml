@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="@string/app_name"
+	    android:textAppearance="@android:style/TextAppearance.Large"
+	/>
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="\nCopyright \u00A9 2011 by Trần Trung Thành\n"
+	/>
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="@string/web_site"
+	    android:autoLink="web"
+	/>
+	<TextView
+	    android:layout_width="fill_parent" 
+	    android:layout_height="wrap_content"
+	    android:text="@string/email"
+	    android:autoLink="email"
+	/>
+</LinearLayout>

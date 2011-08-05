@@ -3,11 +3,9 @@ package com.chauhai.android.fileplayer.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -20,8 +18,9 @@ public class FileUtils {
 	 * Get all sub directories and files in specified directory, sort by name.
 	 * @param dirPath
 	 * @param fileFilter If NULL, then sub files are not get.
-	 * @param fileComparator
-	 * @return
+	 * @param fileComparator Used to sort the file. May be null.
+	 * @return If the directory does not exist, return null.
+	 *         Else return ArrayList of file.
 	 */
 	public static ArrayList<File> listFiles(String dirPath,
 			FileFilter fileFilter,
@@ -29,6 +28,10 @@ public class FileUtils {
 
 		// Current directory.
 		File dir = new File(dirPath);
+		// Return null if it is not a directory.
+		if (!dir.exists() || !dir.isDirectory()) {
+			return null;
+		}
 
 		List<File> files;
 		// Get files

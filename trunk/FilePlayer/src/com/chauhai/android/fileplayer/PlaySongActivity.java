@@ -5,11 +5,13 @@ import java.io.IOException;
 import java.net.URLEncoder;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -19,8 +21,10 @@ import android.widget.TextView;
 import com.chauhai.android.fileplayer.util.FileUtils;
 
 public class PlaySongActivity extends Activity implements OnClickListener {
+
+	private static final String TAG = "PlaySongActivity";
 	
-	public static final String FILE_PATH = "FILE_PATH";
+	private static final String FILE_PATH = "FILE_PATH";
 	
 	/**
 	 * Path to the music file.
@@ -42,6 +46,18 @@ public class PlaySongActivity extends Activity implements OnClickListener {
 	
     private MediaPlayer mediaPlayer;
 
+    /**
+     * Call PalySongActivity to play a music file.
+     * @param context
+     * @param filePath Absolute path.
+     */
+    public static void playSong(Context context, String filePath) {
+    	Log.d(TAG, "playSong " + filePath);
+		Intent intent = new Intent(context, PlaySongActivity.class);
+		intent.putExtra(PlaySongActivity.FILE_PATH, filePath);
+		context.startActivity(intent);
+    }
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +65,6 @@ public class PlaySongActivity extends Activity implements OnClickListener {
         setContentView(R.layout.play_song);
 
         getViewObjects();
-        
         
     	playFile(getIntent().getExtras().get(FILE_PATH).toString());
     }
@@ -69,13 +84,10 @@ public class PlaySongActivity extends Activity implements OnClickListener {
 	    	displayLyrics();
 	    	// Set buttons.
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
@@ -92,7 +104,6 @@ public class PlaySongActivity extends Activity implements OnClickListener {
     		try {
 				songLyricsTextView.setText(FileUtils.fileGetContents(lyricsFilePath));
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
     	}
@@ -144,7 +155,8 @@ public class PlaySongActivity extends Activity implements OnClickListener {
 		} else if (v == songSearchLyricsButton) {
 			// Open web search for the file name.
 			openURL("http://www.google.com/m?q=" +
-					URLEncoder.encode(FileUtils.fileNameWithoutExtension(new File(filePath))));
+					URLEncoder.encode(FileUtils.fileNameWithoutExtension(new File(filePath)) +
+							" " + getString(R.string.search_lyrics)));
 		}
 	}
 
@@ -172,7 +184,6 @@ public class PlaySongActivity extends Activity implements OnClickListener {
 		try {
 			FileUtils.filePutContents(lyricsFilePath, songLyricsEditText.getText().toString());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		// Hide edit lyrics and save button.
