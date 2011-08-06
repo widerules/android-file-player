@@ -14,5 +14,5 @@
     <string name="email">Eメール: contact@chauhai.com</string>
     <string name="no_music_file">音楽ファイルはありません.</string>
     <string name="web_site">ウェブサイト: http://www.chauhai.com</string>
-    <string name="search_lyrics">歌詞</string>
+    <string name="search_lyrics">歌詞 lyrics</string>
 </resources>
