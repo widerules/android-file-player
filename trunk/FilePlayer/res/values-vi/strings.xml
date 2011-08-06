@@ -14,5 +14,5 @@
     <string name="email">Email: contact@chauhai.com</string>
     <string name="no_music_file">Không có file nhạc nào.</string>
     <string name="web_site">Web site: http://www.chauhai.com</string>
-    <string name="search_lyrics">lyrics, lời</string>
+    <string name="search_lyrics">lời lyrics 歌詞</string>
 </resources>
