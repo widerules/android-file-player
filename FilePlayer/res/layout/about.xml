@@ -26,6 +26,7 @@
     		android:layout_gravity="center_vertical"
 		/>
     </LinearLayout>
+    <!--
 	<TextView
 	    android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content"
@@ -63,9 +64,17 @@
 	    android:layout_height="wrap_content"
 	    android:text="\n"
 	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-		android:text="@string/about_application_content"
-	/>
+      -->
+	<ScrollView 
+		    android:id="@+id/ScrollView01" 
+		    android:layout_width="fill_parent" 
+		    android:layout_height="fill_parent"
+		    android:fastScrollEnabled="true" >
+    	<TextView
+		    android:layout_width="fill_parent" 
+		    android:layout_height="wrap_content"
+			android:text="@string/about_application_content"
+		    android:autoLink="web|email"
+		/>
+	</ScrollView>
 </LinearLayout>
