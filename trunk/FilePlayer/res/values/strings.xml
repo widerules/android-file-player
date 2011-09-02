@@ -2,10 +2,18 @@
 <resources>
     <string name="about_application">About the application</string>
     <string name="about_application_content">
+    	\n
+    	Copyright \u00A9 2011 by Trần Trung Thành\n
+    	\n
+    	Web site: http://www.chauhai.com\n
+    	\n
+    	Email: contact@chauhai.com\n
+    	\n
 	    This application plays MP3 files in the "Music" folder.\n
 	    If lyrics file exists, then the lyrics is displayed. Lyrics file has same name with the music file, but with the file extension of .txt.\n
-	    For example, if you have a music file of "example.mp3", its lyrics file name should be "example.txt".\n\n
-	    This application is open source under the Apache License 2.0.
+	    For example, if you have a music file of "example.mp3", its lyrics file name should be "example.txt".\n
+	    \n
+	    This application is open source under the Apache License 2.0. Source code: http://code.google.com/p/android-file-player/
     </string>
     <string name="app_name">File Player</string>
     <string name="format_directory_not_exist">Directory %s does not exist.</string>
