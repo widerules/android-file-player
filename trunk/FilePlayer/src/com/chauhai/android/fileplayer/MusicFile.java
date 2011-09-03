@@ -126,7 +126,7 @@ public class MusicFile {
     	
     	// Get file list.
 //    	String[] musicFileExt = {"mp3", "wma"};
-    	String[] musicFileExt = {"mp3"};
+    	String[] musicFileExt = {"mp3", "ogg"};
     	FileNameComparator fileNameComparator = new FileNameComparator();
     	ArrayList<File> files = new ArrayList<File>();
     	// Get sub directories.

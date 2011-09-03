@@ -26,45 +26,6 @@
     		android:layout_gravity="center_vertical"
 		/>
     </LinearLayout>
-    <!--
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="\n"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="Copyright \u00A9 2011 by Trần Trung Thành"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="\n"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="@string/web_site"
-	    android:autoLink="web"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="\n"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="@string/email"
-	    android:autoLink="email"
-	/>
-	<TextView
-	    android:layout_width="fill_parent" 
-	    android:layout_height="wrap_content"
-	    android:text="\n"
-	/>
-      -->
 	<ScrollView 
 		    android:id="@+id/ScrollView01" 
 		    android:layout_width="fill_parent" 

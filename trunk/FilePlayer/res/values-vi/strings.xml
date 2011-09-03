@@ -9,7 +9,7 @@
     	\n
     	Email: contact@chauhai.com\n
     	\n
-	    Chương trình này sẽ chơi các file MP3 nằm trong thư mục "Music".\n
+	    Chương trình này sẽ chơi các file MP3, OGG nằm trong thư mục "Music".\n
 	    Nếu bạn đặt một file .txt có cùng tên với file nhạc trọng cùng thư mục, chương trình sẽ hiển thị lời bài hát trong file .txt.\n
 	    Ví dụ nếu tên file nhạc là "example.mp3" thì tên file lời bài hát là "example.txt".\n
 	    File lời bài hát phải sử dụng mã Unicode UTF-8.\n
@@ -18,8 +18,6 @@
     </string>
     <string name="app_name">File Player</string>
     <string name="format_directory_not_exist">Thư mục %s không tồn tại.</string>
-    <string name="email">Email: contact@chauhai.com</string>
     <string name="no_music_file">Không có file nhạc nào.</string>
-    <string name="web_site">Web site: http://www.chauhai.com</string>
     <string name="search_lyrics">lời lyrics 歌詞</string>
 </resources>
