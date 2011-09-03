@@ -9,7 +9,7 @@
     	\n
     	Email: contact@chauhai.com\n
     	\n
-	    This application plays MP3, OGG files in the "Music" folder.\n
+	    This application plays MP3, OGG files.\n
 	    If lyrics file exists, then the lyrics is displayed. Lyrics file has same name with the music file, but with the file extension of .txt.\n
 	    For example, if you have a music file of "example.mp3", its lyrics file name should be "example.txt".\n
 	    \n
