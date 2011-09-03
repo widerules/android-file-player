@@ -2,7 +2,6 @@ package com.chauhai.android.fileplayer;
 
 import java.util.List;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,14 +50,8 @@ public class SongListAdapter extends ArrayAdapter<MusicFile> {
 				public void onClick(View v) {
 					MusicFile musicFile = (MusicFile) viewHolder.name.getTag();
 					if (musicFile.isDirectory()) {
-						if (musicFile.getMusicFilePath().indexOf(songListActivity.getCurrentDirectoryPath()) == -1) {
-							// Parent directory. Go up.
-							Log.d(TAG, "Close song list");
-							songListActivity.finish();
-						} else {
-							// Browse sub directory.
-							SongListActivity.listSongs(songListActivity, musicFile.getMusicFilePath());
-						}
+						// Browse sub directory.
+						songListActivity.displaySongList(musicFile.getMusicFilePath());
 					} else {
 						// Play a song.
 						PlaySongActivity.playSong(songListActivity, musicFile.getMusicFilePath());
