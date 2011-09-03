@@ -11,7 +11,7 @@ public class MusicFileFilter implements FileFilter {
 	public String[] acceptFileExt;
 
 	/**
-	 * @param acceptFileExt For example {'mp3', 'ogg'}
+	 * @param acceptFileExt File extensions in lower case. For example {'mp3', 'ogg'}
 	 */
 	public MusicFileFilter(String[] acceptFileExt) {
 		this.acceptFileExt = new String[acceptFileExt.length];
