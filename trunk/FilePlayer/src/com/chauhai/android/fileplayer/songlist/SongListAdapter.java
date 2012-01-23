@@ -1,6 +1,13 @@
-package com.chauhai.android.fileplayer;
+package com.chauhai.android.fileplayer.songlist;
 
 import java.util.List;
+
+import com.chauhai.android.fileplayer.R;
+import com.chauhai.android.fileplayer.R.drawable;
+import com.chauhai.android.fileplayer.R.id;
+import com.chauhai.android.fileplayer.R.layout;
+import com.chauhai.android.fileplayer.playsong.PlaySongActivity;
+import com.chauhai.android.fileplayer.util.MusicFile;
 
 import android.view.LayoutInflater;
 import android.view.View;

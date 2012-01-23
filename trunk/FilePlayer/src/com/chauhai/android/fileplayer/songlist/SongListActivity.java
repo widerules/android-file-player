@@ -1,8 +1,16 @@
-package com.chauhai.android.fileplayer;
+package com.chauhai.android.fileplayer.songlist;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.chauhai.android.fileplayer.AboutActivity;
+import com.chauhai.android.fileplayer.R;
+import com.chauhai.android.fileplayer.R.id;
+import com.chauhai.android.fileplayer.R.layout;
+import com.chauhai.android.fileplayer.R.menu;
+import com.chauhai.android.fileplayer.R.string;
+import com.chauhai.android.fileplayer.util.MusicFile;
 
 import android.app.ListActivity;
 import android.content.Intent;

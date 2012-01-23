@@ -10,8 +10,8 @@
     	Eメール: contact@chauhai.com\n
     	\n
     	このアプリは、MP3, OGGファイルを再生します。\n
-    	歌詞ファイルが存在すれば、歌詞が表示されます。歌詞ファイルは、音楽ファイルと同じファイル名の.txtファイルです。\n
-    	例えば、音楽ファイル名は「example.mp3」の場合、歌詞のファイル名は「example.txt」です.\n
+    	歌詞ファイルが存在すれば、歌詞が表示されます。歌詞ファイルは、音楽ファイルと同じファイル名の.html又は.txtファイルです。\n
+    	例えば、音楽ファイル名は「example.mp3」の場合、歌詞のファイル名は「example.html」又は「example.txt」です.\n
     	歌詞ファイルはUnicode UTF-8でエンコードされる必要があります.\n
     	\n
     	このアプリはApache License 2.0によるオープンソースアプリです。ソースコード：http://code.google.com/p/android-file-player/
