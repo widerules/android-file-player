@@ -65,15 +65,14 @@
             android:src="@drawable/ic_menu_search"
         />
     </LinearLayout>
-    <TextView
-        android:id="@+id/songLyricsTextView"
+    <com.chauhai.android.fileplayer.playsong.LyricsView
+        android:id="@+id/songLyricsView"
         android:layout_width="fill_parent" 
-        android:layout_height="wrap_content"
-        android:text="view lyrics"
+        android:layout_height="fill_parent"
         android:layout_below="@id/songInfoTextView"
         android:layout_above="@id/songPlayToolbar"
         />
-    <EditText
+     <EditText
         android:id="@+id/songLyricsEditText"
         android:visibility="gone"
         android:layout_width="fill_parent" 

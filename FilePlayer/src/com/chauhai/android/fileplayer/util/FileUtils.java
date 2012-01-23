@@ -12,7 +12,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+import android.util.Log;
+
 public class FileUtils {
+
+  private static final String TAG = "FileUtils";
 
 	/**
 	 * Get all sub directories and files in specified directory, sort by name.
@@ -35,6 +39,7 @@ public class FileUtils {
 
 		List<File> files;
 		// Get files
+		Log.d(TAG, "listFiles(" + dirPath +")" + fileFilter);
 		files = Arrays.asList(dir.listFiles(fileFilter));
 		if (fileComparator != null) {
 			Collections.sort(files, fileComparator);
@@ -42,7 +47,7 @@ public class FileUtils {
 		// Merge.
 		return new ArrayList<File>(files);
 	}
-	
+
 	/**
 	 * Return the file extension (without dot).
 	 * @param file
@@ -57,7 +62,7 @@ public class FileUtils {
 		}
 		return fileExt;
 	}
-	
+
 	/**
 	 * Get the file name without extension.
 	 * @param file
@@ -72,7 +77,7 @@ public class FileUtils {
 		}
 		return bareName;
 	}
-	
+
 	public static String fileGetContents(String filePath) throws IOException {
 		String content = null;
 		StringBuilder text = new StringBuilder();
@@ -85,7 +90,7 @@ public class FileUtils {
 		content = text.toString();
 		return content;
 	}
-	
+
 	public static void filePutContents(String filePath, String content) throws IOException {
 		FileWriter fileWriter = new FileWriter(filePath);
 		fileWriter.write(content);

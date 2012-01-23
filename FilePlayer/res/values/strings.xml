@@ -10,8 +10,8 @@
     	Email: contact@chauhai.com\n
     	\n
 	    This application plays MP3, OGG files.\n
-	    If lyrics file exists, then the lyrics is displayed. Lyrics file has same name with the music file, but with the file extension of .txt.\n
-	    For example, if you have a music file of "example.mp3", its lyrics file name should be "example.txt".\n
+	    If lyrics file exists, then the lyrics is displayed. Lyrics file has same name with the music file, but with the file extension of .html or .txt.\n
+	    For example, if you have a music file of "example.mp3", its lyrics file name should be "example.html" or "example.txt".\n
 	    \n
 	    This application is open source under the Apache License 2.0. Source code: http://code.google.com/p/android-file-player/
     </string>
