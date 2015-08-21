@@ -1,0 +1,1 @@
+Browse /sdcard/Music to play selected music file (only mp3 at this time), displaying lyrics from a text file with the same name.
